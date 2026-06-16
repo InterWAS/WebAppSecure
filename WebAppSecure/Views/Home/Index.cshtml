@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @if (ViewData["LoginOk"] is string loginOk)
+    {
+        <p class="text-success">@loginOk</p>
+    }
+
+    @if (ViewData["LoginError"] is string loginError)
+    {
+        <p class="text-danger">@loginError</p>
+    }
+
+    <form asp-controller="Home" asp-action="Submit" method="post">
+        @Html.AntiForgeryToken()
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" value="@ViewData["SanitizedUsername"]">
+        @Html.ValidationMessage("username", null, new { @class = "text-danger" })
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        @Html.ValidationMessage("password", null, new { @class = "text-danger" })
+
+        <button type="submit">Login</button>
+    </form>
+</div>

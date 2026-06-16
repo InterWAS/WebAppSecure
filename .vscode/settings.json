@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "dotnet build": true,
+        "Set-Content": true,
+        "dotnet ef": true,
+        "dotnet test": true
+    }
+}
